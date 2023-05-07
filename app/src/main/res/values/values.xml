@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  游戏加载url  -->
+    <string name="load_url">https://appassets.androidplatform.net/assets/webgal/index.html</string>
+</resources>
