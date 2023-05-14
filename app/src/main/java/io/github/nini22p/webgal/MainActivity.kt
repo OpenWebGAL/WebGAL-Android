@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         webView.settings.javaScriptEnabled = true
         webView.settings.mediaPlaybackRequiresUserGesture = false
+        webView.settings.domStorageEnabled = true
         webView.setInitialScale(100)
         webView.overScrollMode = View.OVER_SCROLL_NEVER
 
