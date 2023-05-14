@@ -16,6 +16,7 @@ import android.view.WindowManager
 import android.webkit.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.webkit.WebViewAssetLoader
 import androidx.webkit.WebViewAssetLoader.AssetsPathHandler
 import androidx.webkit.WebViewClientCompat
@@ -66,9 +67,9 @@ class MainActivity : AppCompatActivity() {
                 webView: WebView,
                 request: WebResourceRequest
             ): Boolean {
-                val url: String = request.url.toString()
-                //在外部浏览器中打开链接
-                startActivity(Intent(Intent.ACTION_VIEW, request.url))
+                // 使用 Custom Tabs 打开外部链接
+                val intent = CustomTabsIntent.Builder().build()
+                intent.launchUrl(this@MainActivity, request.url)
                 return true
             }
         }
