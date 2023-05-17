@@ -1,4 +1,4 @@
-package io.github.nini22p.webgal
+package com.openwebgal.demo
 
 import android.annotation.SuppressLint
 import android.app.Activity

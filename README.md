@@ -13,13 +13,13 @@ The icons used in this template are from: [MakinoharaShoko/WebGAL](https://githu
 * 更改包名以及游戏名和图标
 * 点击菜单栏 `Build` -> `Generate Signed Bundle or APK` 构建 apk
 
-## How to package the game
+## How to build the game
 
 * Install [android studio](https://developer.android.com/studio) and import this project
 * Move the game to `app\src\main\assets\webgal`. Load `app\src\main\assets\webgal\index.html` by default, if you need to customize the load link, please modify the `load_url` field inside the `app\src\main\res\values\values.xml` file
 * Change the package name and the game name and icon
 * Click `Build` -> `Generate Signed Bundle or APK` in the menu bar to build the apk
 
-### 详细步骤 / Detailed steps (Chinese only at the moment)
+### 更多信息 / More Info (Chinese only at the moment)
 
-[打包 WebGAL 游戏到 Android 平台](https://nini22p.github.io/post/webgal-for-android/)
+[打包 WebGAL 游戏到 android 平台](https://docs.openwebgal.com/guide/android.html)
