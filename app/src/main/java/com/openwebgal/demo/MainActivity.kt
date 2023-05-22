@@ -129,7 +129,7 @@ class MainActivity : AppCompatActivity() {
 
             webView.evaluateJavascript(script, null)
         } catch (e: Exception) {
-            Toast.makeText(applicationContext, "获取数据失败", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "Get blob data Failed", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -164,9 +164,8 @@ class MainActivity : AppCompatActivity() {
                 it.close()
             }
             saveData = null
-            Toast.makeText(applicationContext, "导出成功", Toast.LENGTH_LONG).show()
         } catch (e: Exception) {
-            Toast.makeText(applicationContext, "导出失败", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "Export failed", Toast.LENGTH_LONG).show()
         }
     }
 
