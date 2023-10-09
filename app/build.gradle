@@ -16,7 +16,15 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    splits {
+        // Configures multiple APKs based on ABI.
+//        abi {
+//            enable true
+//            reset()
+//            include 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+//            universalApk true
+//        }
+    }
     buildTypes {
         release {
             minifyEnabled false
