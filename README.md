@@ -23,4 +23,5 @@ The icons used in this template are from: [MakinoharaShoko/WebGAL](https://githu
 
 ### 更多信息 / More Info
 
-[https://docs.openwebgal.com/android](https://docs.openwebgal.com/android)
+[https://docs.openwebgal.com/publish/android](https://docs.openwebgal.com/publish/android)
+
