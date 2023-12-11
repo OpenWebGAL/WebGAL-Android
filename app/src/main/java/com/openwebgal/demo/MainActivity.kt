@@ -213,6 +213,9 @@ class MainActivity : AppCompatActivity() {
             AudioManager.STREAM_MUSIC,
             AudioManager.AUDIOFOCUS_GAIN_TRANSIENT
         )
+//        val pauseMediaScript =
+//            "document.querySelectorAll('video, audio').forEach(mediaElement => mediaElement.pause())"
+//        webView.evaluateJavascript(pauseMediaScript, null)
         webView.run {
             pauseTimers()
             onPause()
@@ -223,6 +226,15 @@ class MainActivity : AppCompatActivity() {
     //游戏从后台恢复
     override fun onResume() {
         audioManager?.abandonAudioFocus(null)
+//        val resumeMediaScript =
+//            "document.querySelectorAll('video, audio').forEach(mediaElement => {" +
+//                    "if((!mediaElement.loop && !mediaElement.ended) || mediaElement.loop) {" +
+//                    "if(mediaElement.readyState >= 2) {" +
+//                    "mediaElement.play()" +
+//                    "}" +
+//                    "}" +
+//                    "})"
+//        webView.evaluateJavascript(resumeMediaScript, null)
         webView.run {
             resumeTimers()
             onResume()
