@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 webView: WebView,
                 request: WebResourceRequest
             ): WebResourceResponse? {
-                val interceptedRequest = assetLoader.shouldInterceptRequest(request.url)
+                val interceptedRequest = assetLoader.shouldInterceptRequest(Uri.parse(Uri.decode(request.url.toString())))
                 interceptedRequest?.let {
                     if (request.url.toString().endsWith("js", true)) {
                         it.mimeType = "text/javascript"
