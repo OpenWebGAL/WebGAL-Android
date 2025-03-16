@@ -20,6 +20,8 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.webkit.WebViewAssetLoader
 import androidx.webkit.WebViewAssetLoader.AssetsPathHandler
 import androidx.webkit.WebViewClientCompat
+import androidx.core.graphics.createBitmap
+import androidx.core.net.toUri
 
 class MainActivity : AppCompatActivity() {
 
@@ -55,7 +57,8 @@ class MainActivity : AppCompatActivity() {
                 webView: WebView,
                 request: WebResourceRequest
             ): WebResourceResponse? {
-                val interceptedRequest = assetLoader.shouldInterceptRequest(Uri.parse(Uri.decode(request.url.toString())))
+                val interceptedRequest = assetLoader.shouldInterceptRequest(
+                    Uri.decode(request.url.toString()).toUri())
                 interceptedRequest?.let {
                     if (request.url.toString().endsWith("js", true)) {
                         it.mimeType = "text/javascript"
@@ -97,7 +100,7 @@ class MainActivity : AppCompatActivity() {
 
             //移除默认播放海报
             override fun getDefaultVideoPoster(): Bitmap? {
-                return Bitmap.createBitmap(10, 10, Bitmap.Config.ARGB_8888)
+                return createBitmap(10, 10)
             }
         }
     }
