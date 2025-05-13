@@ -58,7 +58,8 @@ class MainActivity : AppCompatActivity() {
                 request: WebResourceRequest
             ): WebResourceResponse? {
                 val interceptedRequest = assetLoader.shouldInterceptRequest(
-                    Uri.decode(request.url.toString()).toUri())
+                    Uri.decode(request.url.toString()).toUri()
+                )
                 interceptedRequest?.let {
                     if (request.url.toString().endsWith("js", true)) {
                         it.mimeType = "text/javascript"
@@ -99,8 +100,14 @@ class MainActivity : AppCompatActivity() {
             }
 
             //移除默认播放海报
-            override fun getDefaultVideoPoster(): Bitmap? {
+            override fun getDefaultVideoPoster(): Bitmap {
                 return createBitmap(10, 10)
+            }
+
+            //退出游戏
+            override fun onCloseWindow(window: WebView?) {
+                super.onCloseWindow(window)
+                this@MainActivity.finish()
             }
         }
     }
