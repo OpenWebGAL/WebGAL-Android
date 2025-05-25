@@ -73,7 +73,7 @@ jobs:
     - name: Create tag
       id: create_tag
       run: |
-        echo "TAG_NAME=v$(date +%Y%m%d%H%M%S)" >> $GITHUB_OUTPUT
+        echo "TAG_NAME=v$(date +%Y.%m%d.%H%M%S)" >> $GITHUB_OUTPUT
     - name: Release
       uses: softprops/action-gh-release@v2
       env:
