@@ -48,7 +48,7 @@ android {
                 println "---> Rename src files: *.gz to *.keep_gz at: " + projectDir;
             }
             doLast {
-                def assetsDir = "${buildDir}/intermediates/assets/${variant.dirName}"
+                def assetsDir = "${project.layout.buildDirectory.get().asFile}/intermediates/assets/${variant.dirName}"
                 renameFiles(assetsDir, ".keep_gz", ".gz")
                 println "---> Rename APK files before pack: *.keep_gz to *.gz at: " + assetsDir;
 
@@ -61,8 +61,10 @@ android {
 
 def renameFiles(String dirPath, String fromExt, String toExt) {
     fileTree(dir: dirPath, include: "**/*" + fromExt).each { file ->
-        def renamedFile = new File(file.parent, file.name.replace(fromExt, toExt))
-        file.renameTo(renamedFile)
+        if (file.name.endsWith(fromExt) && file.isFile()) {
+            def newName = file.name.substring(0, file.name.length() - fromExt.length()) + toExt
+            file.renameTo(new File(file.parent, newName))
+        }
     }
 }
 
