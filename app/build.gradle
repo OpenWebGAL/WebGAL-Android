@@ -38,6 +38,32 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    aaptOptions {
+        noCompress['.keep_gz']
+    }
+    applicationVariants.all { variant ->
+        variant.mergeAssetsProvider.configure {
+            doFirst {
+                renameFiles("${projectDir}/src/main/assets", ".gz", ".keep_gz")
+                println "---> Rename src files: *.gz to *.keep_gz at: " + projectDir;
+            }
+            doLast {
+                def assetsDir = "${buildDir}/intermediates/assets/${variant.dirName}"
+                renameFiles(assetsDir, ".keep_gz", ".gz")
+                println "---> Rename APK files before pack: *.keep_gz to *.gz at: " + assetsDir;
+
+                renameFiles("${projectDir}/src/main/assets", ".keep_gz", ".gz")
+                println "---> Rename src files: *.keep_gz to *.gz at: " + projectDir;
+            }
+        }
+    }
+}
+
+def renameFiles(String dirPath, String fromExt, String toExt) {
+    fileTree(dir: dirPath, include: "**/*" + fromExt).each { file ->
+        def renamedFile = new File(file.parent, file.name.replace(fromExt, toExt))
+        file.renameTo(renamedFile)
+    }
 }
 
 dependencies {
